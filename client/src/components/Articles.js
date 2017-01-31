@@ -53,10 +53,9 @@ class Articles extends React.Component {
 
     return (
       <div>
-        <div className="text-center">
-          <h1>HELPJUICE</h1>
-          <Search NewRequest={this.handleNewRequest} />
-        </div>
+        <Search NewRequest={this.handleNewRequest} />
+        <hr />
+        <h3>Articles: ({articles.length})</h3>
         <hr />
         {articles}
       </div>
