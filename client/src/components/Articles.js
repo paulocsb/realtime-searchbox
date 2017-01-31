@@ -1,8 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import React from 'react';
-import AppStore from './../stores/AppStore';
-import SearchActions from './../actions/SearchActions';
+import ArticleStore from './../stores/ArticleStore';
+import ArticleActions from './../actions/ArticleActions';
+import Search from './Search';
 import Article from './Article';
 
 function getArticles(article) {
@@ -19,23 +18,28 @@ class Articles extends React.Component {
       articles: []
     };
     this.onChange = this.onChange.bind(this);
+    this.handleNewRequest = this.handleNewRequest.bind(this);
   }
 
   componentWillMount() {
-    AppStore.addChangeListener(this.onChange);
+    ArticleStore.addChangeListener(this.onChange);
   }
 
   componentDidMount() {
-    SearchActions.getArticles();
+    ArticleActions.getArticles();
   }
 
   componentWillUnmount() {
-    AppStore.removeChangeListener(this.onChange);
+    ArticleStore.removeChangeListener(this.onChange);
+  }
+
+  handleNewRequest(query) {
+    ArticleActions.searchArticles(query);
   }
 
   onChange() {
     this.setState({
-      articles: AppStore.getArticles()
+      articles: ArticleStore.getArticles()
     });
   }
 
@@ -49,6 +53,11 @@ class Articles extends React.Component {
 
     return (
       <div>
+        <div className="text-center">
+          <h1>HELPJUICE</h1>
+          <Search NewRequest={this.handleNewRequest} />
+        </div>
+        <hr />
         {articles}
       </div>
     );

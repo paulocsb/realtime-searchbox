@@ -1,5 +1,5 @@
 import AppDispatcher from './../dispatcher/AppDispatcher';
-import { RECIEVE_ERROR, RECEIVE_ARTICLES, RECEIVE_SEARCH } from './../constants/Constants';
+import { RECIEVE_ERROR, RECEIVE_ARTICLES } from './../constants/Constants';
 import { EventEmitter } from 'events';
 
 const CHANGE_EVENT = 'change';
@@ -15,7 +15,7 @@ function setError(error) {
   return _error;
 }
 
-class AppStoreClass extends EventEmitter {
+class ArticleStoreClass extends EventEmitter {
 
   emitChange() {
     this.emit(CHANGE_EVENT);
@@ -38,23 +38,19 @@ class AppStoreClass extends EventEmitter {
   }
 }
 
-const AppStore = new AppStoreClass();
+const ArticleStore = new ArticleStoreClass();
 
-AppStore.dispatchToken = AppDispatcher.register(action => {
+ArticleStore.dispatchToken = AppDispatcher.register(action => {
 
   switch(action.actionType) {
     case RECEIVE_ARTICLES:
       setArticles(action.articles);
-      AppStore.emitChange();
-      break
-
-    case RECEIVE_SEARCH:
-      AppStore.emitChange();
+      ArticleStore.emitChange();
       break
 
     case RECIEVE_ERROR:
       setError(action.message);
-      AppStore.emitChange();
+      ArticleStore.emitChange();
       break
 
     default:
@@ -62,4 +58,4 @@ AppStore.dispatchToken = AppDispatcher.register(action => {
 
 });
 
-export default AppStore;
+export default ArticleStore;
