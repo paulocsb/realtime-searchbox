@@ -32,6 +32,7 @@ Database
 ### Run initialize database
 ```
 $ rails db:setup
+$ rake searchkick:reindex CLASS=Article
 ```
 
 Run RSpec Tests
