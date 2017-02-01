@@ -1,5 +1,5 @@
 import AppDispatcher from './../dispatcher/AppDispatcher';
-import { RECIEVE_ERROR, RECEIVE_SEARCH } from './../constants/Constants';
+import { RECIEVE_ERROR, RECEIVE_SEARCH, CLEAR_SEARCH } from './../constants/Constants';
 import { EventEmitter } from 'events';
 
 const CHANGE_EVENT = 'change';
@@ -44,6 +44,11 @@ SearchStore.dispatchToken = AppDispatcher.register(action => {
 
   switch(action.actionType) {
     case RECEIVE_SEARCH:
+      setSearches(action.searches);
+      SearchStore.emitChange();
+      break
+
+    case CLEAR_SEARCH:
       setSearches(action.searches);
       SearchStore.emitChange();
       break

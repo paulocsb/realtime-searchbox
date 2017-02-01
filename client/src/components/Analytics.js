@@ -31,6 +31,10 @@ class Analytics extends React.Component {
     SearchStore.removeChangeListener(this.onChange);
   }
 
+  handleClearAnalytics() {
+    SearchActions.clearAnalytics();
+  }
+
   onChange() {
     this.setState({
       searches: SearchStore.getSearches()
@@ -48,15 +52,19 @@ class Analytics extends React.Component {
     return (
       <div>
         <div className="page-header">
-        	<h1>Analytics</h1>
+        	<h1>Analytics <button className="btn btn-info pull-right" onClick={this.handleClearAnalytics}>Clear Analytics</button></h1>
       	</div>
       	<table className="table">
-      		<tr>
-		        <th>IP Address</th>
-		        <th>Search Query</th>
-		        <th>Count</th>
-		      </tr>
-      		{searches}
+          <thead>
+        		<tr>
+  		        <th>IP Address</th>
+  		        <th>Search Query</th>
+  		        <th>Count</th>
+  		      </tr>
+          </thead>
+          <tbody>
+      		  {searches}
+          </tbody>
       	</table>
       </div>
     );
