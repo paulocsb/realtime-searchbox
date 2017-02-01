@@ -1,24 +1,69 @@
-# README
+README
+------
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Realtime Search Box
 
-Things you may want to cover:
+Dependencies
+------------
 
-* Ruby version
+- The Ruby 2.2.2+
+- Rails (versions 5.0)
+- Elasticsearch
+- React JS
+- PostgreSQL
 
-* System dependencies
+Configuration
+-------------
 
-* Configuration
+### Clone repository
+```
+$ git clone git@github.com:paulocsb/realtime-searchbox.git
+$ cd realtime-searchbox
+```
 
-* Database creation
+### Run
+```
+$ bundle install && cd client && npm i && cd ..
+```
 
-* Database initialization
+Database
+--------
 
-* How to run the test suite
+### Run initialize database
+```
+$ rails db:setup
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Run RSpec Tests
+---------------
+```
+$ rspec
+```
 
-* Deployment instructions
+Start the Web Server
+--------------------
 
-* ...
+### Run server setup
+```
+$ rake start
+```
+
+### Access web browser:
+
+http://localhost:3000
+
+### Address web api:
+
+http://localhost:3100
+
+### Endpoints:
+
+1. [GET] http://localhost:3100/v1/articles
+2. [GET] http://localhost:3100/v1/searches
+3. [GET] http://localhost:3100/v1/searches/clear
+
+Author
+------
+
+* **Paulo Cesar** - [GitHub](https://github.com/paulocsb)
+
