@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::ArticlesController, type: :controller do
+RSpec.describe Api::V1::SearchesController, type: :controller do
 
   describe "GET #index" do
     
     before(:each) do
-      FactoryGirl.create_list(:article, 4)
+      FactoryGirl.create_list(:search, 4)
     end
 
     it "index method should have sucess result" do
