@@ -2,7 +2,7 @@ module Api::V1
   class SearchesController < ApiController
 
     def index
-    	render json: Search.all
+    	render json: Search.all.order(id: :desc)
     end
 
     def clear

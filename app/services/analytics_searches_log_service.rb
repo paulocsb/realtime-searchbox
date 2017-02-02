@@ -9,7 +9,7 @@ class AnalyticsSearchesLogService
 			  searches_count: 1
 			)
 		else
-			search.update_columns(searches_count: search.searches_count + 1)
+			search.update(searches_count: search.searches_count + 1)
 		end
 	end
 

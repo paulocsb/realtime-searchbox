@@ -16,7 +16,10 @@ class Analytics extends React.Component {
     this.state = { 
       searches: []
     };
+
     this.onChange = this.onChange.bind(this);
+    this.handleSetSubscription = this.handleSetSubscription.bind(this);
+    this.handleGetAnalytics = this.handleGetAnalytics.bind(this);
   }
 
   componentWillMount() {
@@ -25,6 +28,7 @@ class Analytics extends React.Component {
 
   componentDidMount() {
     SearchActions.getSearches();
+    this.handleSetSubscription();
   }
 
   componentWillUnmount() {
@@ -33,6 +37,22 @@ class Analytics extends React.Component {
 
   handleClearAnalytics() {
     SearchActions.clearAnalytics();
+  }
+
+  handleSetSubscription() {
+    let { cable } = this.props;
+    cable.subscriptions.create("AnalyticsChannel", {
+      connected: function() {},
+      disconnected: function() {},
+      received: function(data) {
+        this.handleGetAnalytics();
+      },
+      handleGetAnalytics: this.handleGetAnalytics
+    });
+  }
+
+  handleGetAnalytics() {
+    SearchActions.getSearches();
   }
 
   onChange() {

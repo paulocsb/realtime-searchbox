@@ -17,6 +17,7 @@ class Articles extends React.Component {
     this.state = { 
       articles: []
     };
+
     this.onChange = this.onChange.bind(this);
     this.handleNewRequest = this.handleNewRequest.bind(this);
   }
@@ -55,7 +56,7 @@ class Articles extends React.Component {
       <div>
         <Search NewRequest={this.handleNewRequest} />
         <hr />
-        <h3>Articles: ({articles.length})</h3>
+        <h3>Articles</h3>
         <hr />
         {articles}
       </div>
