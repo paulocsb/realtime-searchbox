@@ -21,24 +21,9 @@ $ git clone git@github.com:paulocsb/realtime-searchbox.git
 $ cd realtime-searchbox
 ```
 
-### Run
+### Setup Application
 ```
-$ bundle install && cd client && npm i && cd ..
-```
-
-Database
---------
-
-### Run initialize database
-```
-$ rails db:setup
-$ rake searchkick:reindex CLASS=Article
-```
-
-Run RSpec Tests
----------------
-```
-$ rspec
+$ rake init
 ```
 
 Start the Web Server
@@ -62,6 +47,12 @@ http://localhost:3100
 1. [GET] http://localhost:3100/v1/articles
 2. [GET] http://localhost:3100/v1/searches
 3. [GET] http://localhost:3100/v1/searches/clear
+
+Run RSpec Tests
+---------------
+```
+$ rspec
+```
 
 Author
 ------
